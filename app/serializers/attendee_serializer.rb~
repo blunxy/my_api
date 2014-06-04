@@ -1,0 +1,4 @@
+class AttendeeSerializer < ActiveModel::Serializer
+  attributes :id, :fullname, :email
+  self.root = false
+end
