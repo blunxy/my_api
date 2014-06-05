@@ -1,7 +1,7 @@
 class AttendeesController < ApplicationController
 
   def index
-    render json: Attendee.all
+    render json: Attendee.all, status: 200
   end
 
   private

@@ -11,6 +11,8 @@ gem 'pg'
 
 gem 'active_model_serializers'
 
+gem 'mocha'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
