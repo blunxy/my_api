@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :attendees
+  resources :attendees, :only => :index
 
 end
