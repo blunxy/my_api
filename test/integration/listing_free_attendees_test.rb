@@ -17,7 +17,7 @@ class ListingFreeAttendeesTest < ActionDispatch::IntegrationTest
 
     assert_response 200
     assert is_json?(response)
-    assert_equal 2, num_records_in(response)
+    assert_equal 1, num_records_in(response)
   end
 
 end
