@@ -4,11 +4,18 @@ require 'rails/test_help'
 require 'minitest/pride'
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
-  #  fixtures :all
+
+  def is_json?(response)
+    response.content_type == Mime::JSON
+  end
+
+  def num_records_in(response)
+    body_as_json(response).size
+  end
+
+  def body_as_json(response)
+    JSON.parse(response.body)
+  end
   
   
 end

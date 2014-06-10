@@ -14,8 +14,8 @@ class ListingAttendeesTest < ActionDispatch::IntegrationTest
     get '/attendees'
 
     assert_response 200
-    assert_equal Mime::JSON, response.content_type
-    assert_equal Attendee.count, JSON.parse(response.body).size
+    assert is_json?(response)
+    assert_equal 2, num_records_in(response)
   end
 
 
@@ -23,8 +23,8 @@ class ListingAttendeesTest < ActionDispatch::IntegrationTest
     get '/attendees?name=Jo' 
 
     assert_response 200
-    assert_equal Mime::JSON, response.content_type
-    assert_equal 1, JSON.parse(response.body).size
+    assert is_json?(response)
+    assert_equal 1, num_records_in(response)
   end
   
 end
