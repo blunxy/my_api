@@ -5,7 +5,6 @@ require 'mocha/mini_test'
 class ListingAttendeesTest < ActionDispatch::IntegrationTest
 
   setup do
-    Attendee.destroy_all
     Attendee.create!(fullname: 'Jordan Pratt', email: 'blunxy@gmail.com')
     Attendee.create!(fullname: 'Mark Stadel', email: 'mstadel@example.com')
   end

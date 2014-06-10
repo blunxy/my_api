@@ -1,4 +1,4 @@
-class AttendeesController < ApplicationController
+class AttendeesController < NoRootController
 
   def index
     attendees = Attendee.all
@@ -7,11 +7,6 @@ class AttendeesController < ApplicationController
       attendees = attendees.find_all { |att| att.fullname =~ /#{name_to_match}/i }
     end
     render json: attendees, status: 200
-  end
-
-  private
-  def default_serializer_options
-    { root: false }
   end
 
 end

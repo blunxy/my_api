@@ -1,3 +1,8 @@
-class NoRootController < ActiveModel::Serializer
-  self.root = false
+class NoRootController < ApplicationController
+
+  private
+  def default_serializer_options
+    { root: false }
+  end
+
 end
