@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :attendees, :only => :index
-  resources :free_attendees, :only => :index
-
+  resources :attendees, :only => [:index, :create, :show]
+  resources :free_attendees
+  
 end

@@ -9,4 +9,20 @@ class AttendeesController < NoRootController
     render json: attendees, status: 200
   end
 
+  def create
+    attendee = Attendee.new(attendee_params)
+    if attendee.save
+      render json: attendee, status: 201, location: attendee
+    else
+      render json: attendee.errors, status: 422
+    end
+  end
+
+
+  private
+
+  def attendee_params
+    params.require(:attendee).permit(:fullname, :email)
+  end
+
 end

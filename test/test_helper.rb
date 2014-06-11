@@ -14,7 +14,7 @@ class ActiveSupport::TestCase
   end
 
   def body_as_json(response)
-    JSON.parse(response.body)
+    JSON.parse(response.body, symbolize_names: true)
   end
   
   
