@@ -18,6 +18,12 @@ class AttendeesController < NoRootController
     end
   end
 
+  def destroy
+    attendee = Attendee.find(params[:id])
+    attendee.destroy!
+    render nothing: true, status: 204
+  end
+
 
   private
 
