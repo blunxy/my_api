@@ -4,4 +4,9 @@ class Attendee < ActiveRecord::Base
 
   validates_presence_of :fullname
 
+  belongs_to :is_playing, 
+  class_name: "Game", 
+  foreign_key: 'now_playing', 
+  inverse_of: :players
+
 end

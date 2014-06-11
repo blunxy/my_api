@@ -5,7 +5,9 @@ require 'mocha/mini_test'
 class ListingAttendeesTest < ActionDispatch::IntegrationTest
 
   setup do
-    Attendee.create!(fullname: 'Jordan Pratt', email: 'blunxy@gmail.com')
+    @game = Game.create!(name: 'Die Macher')
+    @game.players.create!(fullname: 'Jordan Pratt', email: 'blunxy@gmail.com')
+
     Attendee.create!(fullname: 'Mark Stadel', email: 'mstadel@example.com')
   end
 
@@ -14,7 +16,13 @@ class ListingAttendeesTest < ActionDispatch::IntegrationTest
 
     assert_response 200
     assert is_json?(response)
-    assert_equal 2, num_records_in(response)
+
+    attendees = body_as_json(response)
+    assert_equal Attendee.count, attendees.size
+
+    found_attendee = Attendee.find(attendees.first[:id])
+    assert_equal @game.id, found_attendee.now_playing
+
   end
 
 
